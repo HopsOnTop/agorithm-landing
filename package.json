@@ -1,0 +1,10 @@
+{
+  "name": "agorithm-landing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Landing page for Agorithm — precision agriculture guidance app.",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Static site — no build step required.'"
+  }
+}
