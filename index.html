@@ -262,6 +262,172 @@ body {
   animation: scrollBounce 2s infinite;
 }
 
+/* ===== DEVICE SHOWCASE ===== */
+.showcase {
+  padding: 80px 24px 100px;
+  background: var(--bg);
+  overflow: hidden;
+}
+.showcase-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.showcase-row {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.showcase-device {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.showcase-device.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.device-iphone {
+  position: relative;
+  display: inline-block;
+  background: #18191a;
+  border-radius: 44px;
+  padding: 11px;
+  box-shadow:
+    0 0 0 1.5px #2c2f2c,
+    0 20px 60px rgba(0,0,0,0.5),
+    inset 0 0 0 1px rgba(255,255,255,0.04);
+}
+.device-iphone .device-screen {
+  position: relative;
+  border-radius: 35px;
+  overflow: hidden;
+  background: #0a0b0a;
+}
+.device-iphone .device-screen img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.device-iphone .device-island {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 86px;
+  height: 25px;
+  background: #000;
+  border-radius: 18px;
+  z-index: 2;
+}
+.device-iphone::before {
+  content: '';
+  position: absolute;
+  right: -2px;
+  top: 100px;
+  width: 3px;
+  height: 36px;
+  background: #2c2f2c;
+  border-radius: 0 2px 2px 0;
+}
+.device-iphone::after {
+  content: '';
+  position: absolute;
+  left: -2px;
+  top: 82px;
+  width: 3px;
+  height: 24px;
+  background: #2c2f2c;
+  border-radius: 2px 0 0 2px;
+  box-shadow: 0 32px 0 #2c2f2c, 0 56px 0 #2c2f2c;
+}
+
+.device-iphone.portrait .device-screen { width: 240px; }
+.device-iphone.landscape {
+  border-radius: 44px;
+}
+.device-iphone.landscape .device-screen {
+  width: 480px;
+  border-radius: 35px;
+}
+.device-iphone.landscape .device-island {
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%) translateX(0);
+  width: 25px;
+  height: 86px;
+}
+.device-iphone.landscape::before {
+  bottom: -2px;
+  top: auto;
+  right: auto;
+  left: 100px;
+  width: 36px;
+  height: 3px;
+  border-radius: 0 0 2px 2px;
+}
+.device-iphone.landscape::after {
+  top: -2px;
+  left: auto;
+  right: 82px;
+  width: 24px;
+  height: 3px;
+  border-radius: 2px 2px 0 0;
+  box-shadow: -32px 0 0 #2c2f2c, -56px 0 0 #2c2f2c;
+}
+
+.device-ipad {
+  position: relative;
+  display: inline-block;
+  background: #18191a;
+  border-radius: 20px;
+  padding: 9px;
+  box-shadow:
+    0 0 0 1.5px #2c2f2c,
+    0 20px 60px rgba(0,0,0,0.5),
+    inset 0 0 0 1px rgba(255,255,255,0.04);
+}
+.device-ipad .device-screen {
+  position: relative;
+  border-radius: 13px;
+  overflow: hidden;
+  background: #0a0b0a;
+}
+.device-ipad .device-screen img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.device-ipad .device-cam {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #141714;
+  border-radius: 50%;
+  z-index: 2;
+  box-shadow: inset 0 0 2px rgba(0,0,0,0.6);
+}
+.device-ipad.landscape .device-screen { width: 520px; }
+.device-ipad.landscape .device-cam { top: 50%; right: 3px; transform: translateY(-50%); }
+
+@media (max-width: 900px) {
+  .showcase-row { gap: 28px; }
+  .device-iphone.portrait .device-screen { width: 180px; }
+  .device-iphone.landscape .device-screen { width: 340px; }
+  .device-ipad.landscape .device-screen { width: 360px; }
+  .device-iphone { border-radius: 36px; padding: 9px; }
+  .device-iphone .device-screen { border-radius: 28px; }
+  .device-iphone .device-island { width: 68px; height: 20px; top: 8px; }
+}
+@media (max-width: 600px) {
+  .device-iphone.portrait .device-screen { width: 160px; }
+  .device-iphone.landscape .device-screen { width: 80vw; max-width: 340px; }
+  .device-ipad.landscape .device-screen { width: 85vw; max-width: 360px; }
+  .showcase-row { flex-direction: column; align-items: center; }
+}
+
 /* ===== SECTIONS ===== */
 section {
   padding: 100px 24px;
@@ -733,6 +899,42 @@ footer a:hover { color: var(--emerald); }
 
   <div class="scroll-hint">
     <div class="chevron"></div>
+  </div>
+</section>
+
+<!-- ===== DEVICE SHOWCASE ===== -->
+<section class="showcase">
+  <div class="showcase-inner">
+    <div class="showcase-row">
+
+      <div class="showcase-device reveal" style="transition-delay: 0.1s;">
+        <div class="device-iphone portrait">
+          <div class="device-screen">
+            <div class="device-island"></div>
+            <img src="/img/iphone-operate.png" alt="Agorithm operate screen" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <div class="showcase-device reveal" style="transition-delay: 0s;">
+        <div class="device-ipad landscape">
+          <div class="device-screen">
+            <div class="device-cam"></div>
+            <img src="/img/ipad-work-landscape.png" alt="Agorithm work screen on iPad" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <div class="showcase-device reveal" style="transition-delay: 0.2s;">
+        <div class="device-iphone portrait">
+          <div class="device-screen">
+            <div class="device-island"></div>
+            <img src="/img/iphone-boundary.png" alt="Agorithm field boundary" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
