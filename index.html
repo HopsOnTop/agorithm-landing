@@ -628,6 +628,7 @@ section[id] { scroll-margin-top: 80px; }
   gap: 24px;
   padding: 0 24px 20px;
   width: max-content;
+  align-items: center;
 }
 .evidence-item {
   flex-shrink: 0;
@@ -651,7 +652,13 @@ section[id] { scroll-margin-top: 80px; }
 }
 .device-ipad.mini .device-screen {
   width: 340px;
+  aspect-ratio: 4 / 3;
   border-radius: 9px;
+}
+.device-ipad.mini .device-screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .device-ipad.mini .device-cam {
   width: 4px;
@@ -1757,6 +1764,7 @@ footer a:hover { color: var(--emerald); }
     const fieldX = inset;
     const fieldY = inset;
     const fieldW = W - inset * 2;
+    const fieldH = H - inset * 2;
     const stripCount = 8;
     const stripH = 6;
     const gap = 1;
